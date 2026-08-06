@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { API_URL } from '@/lib/config';
+import { GRE_API_URL } from '@/lib/config';
 import { Clock, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface AuditLog {
@@ -32,7 +32,7 @@ export default function AdminAuditPage() {
     try {
       setLoading(true);
       const params = filterAction !== 'ALL' ? `?action=${filterAction}` : '';
-      const res = await fetch(`${API_URL}/api/admin/audit-trail${params}`, {
+      const res = await fetch(`${GRE_API_URL}/api/admin/audit-trail${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

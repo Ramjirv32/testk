@@ -247,8 +247,8 @@ export default function GREAdminPage() {
             Allocate and manage GRE tests for students
           </p>
 
-          <button
-            onClick={() => setShowAllocateModal(true)}
+          <Link
+            href="/admin/gre-allocations"
             style={{
               padding: '12px 24px',
               backgroundColor: '#e61a8d',
@@ -258,10 +258,12 @@ export default function GREAdminPage() {
               fontWeight: '600',
               cursor: 'pointer',
               fontSize: '16px',
+              textDecoration: 'none',
+              display: 'inline-block',
             }}
           >
             Allocate New Test
-          </button>
+          </Link>
         </div>
 
         {/* Admin Stats Cards - 5 stat cards */}

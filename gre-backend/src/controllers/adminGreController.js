@@ -8,7 +8,7 @@ exports.getGREStats = async (req, res) => {
     const ticketsRes = await pool.query("SELECT COUNT(*) FROM gre_tickets WHERE UPPER(status) = 'PENDING'");
     const allocRes = await pool.query('SELECT COUNT(*) FROM test_allocations');
     const questionsRes = await pool.query('SELECT COUNT(*) FROM questions');
-    const termRes = await pool.query("SELECT COUNT(*) FROM test_allocations WHERE status = 'TERMINATED'");
+    const termRes = await pool.query("SELECT COUNT(*) FROM test_allocations WHERE status IN ('TERMINATED', 'MALPRACTICE')");
 
     res.json({
       success: true,

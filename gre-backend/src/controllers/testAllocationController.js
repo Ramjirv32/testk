@@ -394,22 +394,34 @@ exports.getStudentAllocations = async (req, res) => {
     }
 
     const placeholders = allStudentIds.map((_, i) => `$${i + 1}`).join(',');
-    let query = `SELECT * FROM test_allocations WHERE student_id IN (${placeholders})`;
+    let query = `SELECT *, 
+      CASE 
+        WHEN status IN ('IN_PROGRESS', 'ASSIGNED', 'SCHEDULED') AND expires_at < NOW() THEN 'EXPIRED'
+        ELSE status 
+      END as computed_status
+      FROM test_allocations WHERE student_id IN (${placeholders})`;
     const params = allStudentIds;
 
     if (status && status !== 'all' && status !== 'ALL') {
       params.push(status);
-      query += ` AND status = $${params.length}`;
+      query += ` AND UPPER(status) = $${params.length}`;
     }
 
     query += ` ORDER BY created_at DESC`;
 
     const result = await pool.query(query, params);
 
-    const allocations = result.rows.map(a => ({
-      ...a,
-      question_ids: safeParseQuestionIds(a.question_ids),
-    }));
+    const allocations = result.rows.map(a => {
+      const parsed = {
+        ...a,
+        question_ids: safeParseQuestionIds(a.question_ids),
+      };
+      // Use computed_status if it indicates EXPIRED
+      if (a.computed_status === 'EXPIRED') {
+        parsed.status = 'EXPIRED';
+      }
+      return parsed;
+    });
 
     res.json({
       success: true,

@@ -342,6 +342,13 @@ exports.getAuditTrail = async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching audit trail:', error);
+    // If table doesn't exist, return empty array gracefully
+    if (error.code === '42P01' || error.message.includes('does not exist')) {
+      return res.json({
+        success: true,
+        data: { logs: [] },
+      });
+    }
     res.status(500).json({ success: false, error: error.message });
   }
 };
@@ -357,7 +364,11 @@ exports.getAllocations = async (req, res) => {
     let query = `
       SELECT a.*,
              COALESCE(u.email, CASE WHEN a.student_id LIKE '%@%' THEN a.student_id ELSE NULL END) as student_email,
-             COALESCE(u.name, CASE WHEN a.student_id LIKE '%@%' THEN SPLIT_PART(a.student_id, '@', 1) ELSE a.student_id END) as student_name
+             COALESCE(u.name, CASE WHEN a.student_id LIKE '%@%' THEN SPLIT_PART(a.student_id, '@', 1) ELSE a.student_id END) as student_name,
+             CASE 
+               WHEN a.status IN ('IN_PROGRESS', 'ASSIGNED', 'SCHEDULED') AND a.expires_at < NOW() THEN 'EXPIRED'
+               ELSE a.status 
+             END as computed_status
       FROM test_allocations a
       LEFT JOIN users u ON (a.student_id = u.id OR LOWER(a.student_id) = LOWER(u.email))
       WHERE 1=1
@@ -379,10 +390,17 @@ exports.getAllocations = async (req, res) => {
 
     const result = await pool.query(query, params);
 
-    const allocations = result.rows.map(a => ({
-      ...a,
-      question_ids: safeParseQuestionIds(a.question_ids),
-    }));
+    const allocations = result.rows.map(a => {
+      const parsed = {
+        ...a,
+        question_ids: safeParseQuestionIds(a.question_ids),
+      };
+      // Use computed_status if it indicates EXPIRED
+      if (a.computed_status === 'EXPIRED') {
+        parsed.status = 'EXPIRED';
+      }
+      return parsed;
+    });
 
     res.json({
       success: true,
