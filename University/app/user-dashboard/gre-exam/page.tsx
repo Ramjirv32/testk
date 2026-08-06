@@ -841,12 +841,37 @@ function GREExamPage() {
             onClick={() => setShowExitConfirm(true)}
             style={{
               padding: '8px 16px',
+              backgroundColor: '#e61a8d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontWeight: 700,
+              fontSize: '13px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              boxShadow: '0 2px 4px rgba(230,26,141,0.25)',
+              transition: 'all 0.2s',
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            End &amp; Submit Test
+          </button>
+
+          <button
+            onClick={() => setShowExitConfirm(true)}
+            style={{
+              padding: '8px 14px',
               backgroundColor: '#f0f0f0',
               border: '1px solid #ede9e4',
               borderRadius: '6px',
               cursor: 'pointer',
               fontWeight: 600,
               color: '#2d2d2d',
+              fontSize: '12px',
             }}
           >
             Exit
@@ -1124,7 +1149,7 @@ function GREExamPage() {
         </div>
       </div>
 
-      {/* Exit Confirmation Modal */}
+      {/* End & Submit Confirmation Modal */}
       {showExitConfirm && (
         <div style={{
           position: 'fixed',
@@ -1132,7 +1157,8 @@ function GREExamPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          backdropFilter: 'blur(4px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1141,15 +1167,31 @@ function GREExamPage() {
           <div style={{
             backgroundColor: 'white',
             padding: '32px',
-            borderRadius: '12px',
-            maxWidth: '400px',
+            borderRadius: '16px',
+            maxWidth: '440px',
+            width: '90%',
             textAlign: 'center',
+            boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)',
           }}>
-            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '12px', color: '#2d2d2d' }}>
-              Exit Exam?
+            <div style={{
+              width: '56px',
+              height: '56px',
+              backgroundColor: '#fde8f5',
+              color: '#e61a8d',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+              fontSize: '24px',
+            }}>
+              🏁
+            </div>
+            <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px', color: '#111827' }}>
+              End &amp; Submit GRE Exam?
             </h2>
-            <p style={{ color: '#5a5a5a', marginBottom: '24px' }}>
-              Exiting will submit your answers. This cannot be undone.
+            <p style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6', marginBottom: '24px' }}>
+              All your entered answers across all sections will be automatically saved and your test scorecard will be generated. Are you sure you want to end this test now?
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <button
@@ -1157,30 +1199,34 @@ function GREExamPage() {
                 style={{
                   flex: 1,
                   padding: '12px',
-                  backgroundColor: 'white',
-                  border: '1px solid #ede9e4',
-                  borderRadius: '6px',
+                  backgroundColor: '#f3f4f6',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '8px',
                   cursor: 'pointer',
-                  fontWeight: 600,
-                  color: '#2d2d2d',
+                  fontWeight: 700,
+                  color: '#374151',
+                  fontSize: '13px',
                 }}
               >
-                Continue
+                Cancel &amp; Resume
               </button>
               <button
                 onClick={handleSubmitExam}
+                disabled={submitting}
                 style={{
                   flex: 1,
                   padding: '12px',
                   backgroundColor: '#e61a8d',
                   color: 'white',
                   border: 'none',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  fontWeight: 600,
+                  borderRadius: '8px',
+                  cursor: submitting ? 'not-allowed' : 'pointer',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  boxShadow: '0 2px 4px rgba(230,26,141,0.3)',
                 }}
               >
-                Submit & Exit
+                {submitting ? 'Submitting...' : 'Yes, Submit Test'}
               </button>
             </div>
           </div>
