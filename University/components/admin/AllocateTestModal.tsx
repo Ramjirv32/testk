@@ -265,7 +265,11 @@ export const AllocateTestModal: React.FC<AllocateTestModalProps> = ({
       if (res.ok) {
         const data = await res.json();
         const list = data.data?.students || data.students || [];
-        setStudentsList(Array.isArray(list) ? list : []);
+        const studentArr = Array.isArray(list) ? list : [];
+        setStudentsList(studentArr);
+        if (!selectedStudentId && !studentId && studentArr.length > 0) {
+          setSelectedStudentId(studentArr[0].id || studentArr[0].email);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch students list', err);
@@ -320,6 +324,13 @@ export const AllocateTestModal: React.FC<AllocateTestModalProps> = ({
     e.preventDefault();
     setSubmitting(true);
     setError('');
+
+    const targetStudent = selectedStudentId || studentId;
+    if (!targetStudent) {
+      setError('Please select a Target Student Account from the dropdown before allocating.');
+      setSubmitting(false);
+      return;
+    }
 
     const now = new Date();
     if (scheduledAt && new Date(scheduledAt) < new Date(now.getTime() - 2 * 60 * 1000)) {
