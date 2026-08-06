@@ -72,6 +72,8 @@ export default function GREDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState('ALL');
+  const [typeFilter, setTypeFilter] = useState('ALL');
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const [currentTime, setCurrentTime] = useState<Date>(new Date());

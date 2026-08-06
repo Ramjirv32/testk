@@ -248,3 +248,35 @@ exports.bulkImportQuestions = async (req, res) => {
     client.release();
   }
 };
+
+// Upload question image
+exports.uploadQuestionImage = async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const { image, filename } = req.body;
+
+    if (!image) {
+      return res.status(400).json({ success: false, error: 'No image data provided' });
+    }
+
+    const uploadDir = path.join(__dirname, '../../../original/gre-frontend/public/images');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    const cleanFilename = (filename || `img_${Date.now()}.png`).replace(/[^a-zA-Z0-9_.-]/g, '_');
+    const filePath = path.join(uploadDir, cleanFilename);
+
+    // Parse Base64 image string
+    const base64Data = image.replace(/^data:image\/\w+;base64,/, '');
+    const buffer = Buffer.from(base64Data, 'base64');
+    fs.writeFileSync(filePath, buffer);
+
+    const imageUrl = `http://localhost:11000/images/${encodeURIComponent(cleanFilename)}`;
+    res.json({ success: true, image_url: imageUrl, filename: cleanFilename });
+  } catch (error) {
+    console.error('Error uploading question image:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};

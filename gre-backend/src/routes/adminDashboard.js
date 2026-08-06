@@ -2,6 +2,7 @@ const express = require('express');
 const adminDashboardController = require('../controllers/adminDashboardController');
 const ticketController = require('../controllers/ticketController');
 const testAllocationController = require('../controllers/testAllocationController');
+const questionsController = require('../controllers/questionsController');
 
 const router = express.Router();
 
@@ -23,7 +24,10 @@ router.get('/questions/stats', adminDashboardController.getQuestionStats);
 router.get('/questions/categories', adminDashboardController.getCategoryHierarchy);
 router.get('/questions/available', adminDashboardController.getAvailableQuestions);
 router.get('/questions', adminDashboardController.getQuestions);
+router.post('/questions', questionsController.createQuestion);
+router.put('/questions/:id', questionsController.updateQuestion);
 router.delete('/questions/:id', adminDashboardController.deleteQuestion);
+router.post('/questions/upload-image', questionsController.uploadQuestionImage);
 
 /**
  * Test Tickets (GRE)
