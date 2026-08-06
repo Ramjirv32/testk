@@ -518,20 +518,34 @@ exports.getExamProgress = async (req, res) => {
 exports.logMalpractice = async (req, res) => {
   try {
     const allocation_id = req.body.allocation_id || req.body.allocationId;
+    const exam_session_id = req.body.exam_session_id || req.body.examSessionId;
     const event_type = req.body.event_type || req.body.violation_type || 'SUSPICIOUS_BEHAVIOR';
     const details = req.body.details || {};
     const timestamp = req.body.timestamp || new Date().toISOString();
     const userId = req.user?.id || req.user?.sub || 'system';
 
-    if (allocation_id) {
+    // Get exam_session_id from allocation_id if not provided
+    let sessionId = exam_session_id;
+    if (!sessionId && allocation_id) {
+      const sessionResult = await pool.query(
+        `SELECT id FROM exam_sessions WHERE allocation_id = $1 ORDER BY created_at DESC LIMIT 1`,
+        [allocation_id]
+      );
+      if (sessionResult.rows.length > 0) {
+        sessionId = sessionResult.rows[0].id;
+      }
+    }
+
+    if (sessionId || allocation_id) {
       await pool.query(
-        `INSERT INTO anti_cheat_logs (allocation_id, student_id, violation_type, details, logged_at)
-         VALUES ($1, $2, $3, $4, $5)`,
+        `INSERT INTO anti_cheat_logs (exam_session_id, user_id, event_type, description, severity, created_at)
+         VALUES ($1, $2, $3, $4, $5, $6)`,
         [
-          allocation_id,
+          sessionId || null,
           userId,
           event_type,
-          JSON.stringify(details),
+          JSON.stringify({ ...details, allocation_id }),
+          'HIGH',
           timestamp
         ]
       ).catch(err => console.warn('Database insert malpractice log warning:', err.message));
