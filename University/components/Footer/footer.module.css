@@ -1,0 +1,104 @@
+.footerSection {
+  background-color: #faf4ec;
+  padding: 40px 0 20px;
+}
+
+.footerLink {
+  margin-bottom: 30px;
+}
+
+.footerHeading {
+  color: #070642;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerList li {
+  margin-bottom: 10px;
+}
+
+.footerAnchor {
+  color: #070642;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.25s ease;
+}
+
+.footerAnchor:hover {
+  color: #9a3197;
+}
+
+.footerImage img {
+  max-width: 100%;
+  height: auto;
+}
+
+.copyWriteContainer {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.footerCopyright {
+  color: #000;
+  margin: 0;
+  font-size: 14px;
+}
+
+.footerCopyright a {
+  color: #9a3197;
+  text-decoration: none;
+}
+
+.footerIcons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.footerIconList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.footerIconButton {
+  border: 1px solid #070642;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footerIconButton i {
+  color: #070642;
+  font-size: 18px;
+}
+
+.footerIconButton:hover {
+  background-color: #9a3197;
+  border-color: #9a3197;
+}
+
+.footerIconButton:hover i {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footerIconList {
+    justify-content: flex-start;
+  }
+}

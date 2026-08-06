@@ -1,0 +1,123 @@
+.contactSection {
+  padding: 60px 0;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.infoCard {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(7, 6, 66, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.infoImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.infoContent {
+  padding: 20px;
+}
+
+.infoContent h3 {
+  color: #070642;
+  margin-bottom: 8px;
+}
+
+.infoContent p,
+.infoContent a {
+  color: #5a5a5a;
+  font-size: 15px;
+}
+
+.iconBadge {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -28px;
+  right: 20px;
+  box-shadow: 0 15px 45px rgba(154, 49, 151, 0.2);
+}
+
+.contactMap {
+  padding: 40px 0 80px;
+}
+
+.mapWrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(7, 6, 66, 0.12);
+}
+
+.formWrapper {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 30px 60px rgba(7, 6, 66, 0.12);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #070642;
+}
+
+.formControl {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.submitButton {
+  background: linear-gradient(120deg, #e084cd, #9a3197);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+}
+
+.followList {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.followList a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(154, 49, 151, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a3197;
+}

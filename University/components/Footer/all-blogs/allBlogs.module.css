@@ -1,0 +1,354 @@
+.pageWrapper {
+  background: #faf4ec;
+  min-height: 100vh;
+}
+
+.searchBox {
+  max-width: 600px;
+  margin-top: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 50px;
+  border: 2px solid #e084cd;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #9a3197;
+  box-shadow: 0 0 0 4px rgba(154, 49, 151, 0.15);
+}
+
+.clearBtn {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #9a3197;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+.clearBtn:hover {
+  color: #e084cd;
+}
+
+.resultCount {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+.resultCount strong {
+  color: #9a3197;
+  font-weight: 700;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #070642;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.categorySection {
+  padding: 60px 0 80px;
+}
+
+.categoryGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.categoryCard {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 220px;
+  box-shadow: 0 12px 35px rgba(7, 6, 66, 0.08);
+  transition: all 0.4s ease;
+  background: #070642;
+  cursor: pointer;
+  border: 3px solid transparent;
+}
+
+.categoryCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(154, 49, 151, 0.2);
+}
+
+.categoryCard.categoryActive {
+  border-color: #e084cd;
+  box-shadow: 0 20px 60px rgba(224, 132, 205, 0.3);
+}
+
+.categoryOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 6, 66, 0.1) 0%, rgba(7, 6, 66, 0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  transition: background 0.3s ease;
+}
+
+.categoryCard:hover .categoryOverlay {
+  background: linear-gradient(180deg, rgba(154, 49, 151, 0.2) 0%, rgba(154, 49, 151, 0.9) 100%);
+}
+
+.categoryOverlay h4 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.blogsSection {
+  padding: 60px 0 80px;
+}
+
+.blogsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.blogCard {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(7, 6, 66, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  cursor: pointer;
+}
+
+.blogCard:hover {
+  box-shadow: 0 20px 50px rgba(154, 49, 151, 0.15);
+  transform: translateY(-8px);
+}
+
+.blogVisible {
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blogImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.blogOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(154, 49, 151, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.blogCard:hover .blogOverlay {
+  opacity: 1;
+}
+
+.readBtn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #9a3197, #e084cd);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  z-index: 2;
+}
+
+.readBtn.readBtnActive,
+.blogCard:hover .readBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.readBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(154, 49, 151, 0.4);
+}
+
+.blogContent {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogMeta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.blogDate {
+  color: #5a5a5a;
+  font-weight: 500;
+}
+
+.blogCategory {
+  display: inline-block;
+  background: linear-gradient(135deg, #9a3197, #e084cd);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blogTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #070642;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.blogLink {
+  color: #9a3197;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blogLink:hover {
+  color: #e084cd;
+  gap: 12px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 2px dashed #e084cd;
+}
+
+.emptyState p {
+  font-size: 18px;
+  color: #5a5a5a;
+  margin-bottom: 24px;
+}
+
+.resetBtn,
+.blogLink {
+  background: linear-gradient(135deg, #9a3197, #e084cd);
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.resetBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(154, 49, 151, 0.4);
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .blogsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .categorySection {
+    padding: 40px 0 60px;
+  }
+
+  .blogsSection {
+    padding: 40px 0 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .blogsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .blogContent {
+    padding: 16px;
+  }
+
+  .blogTitle {
+    font-size: 16px;
+  }
+}

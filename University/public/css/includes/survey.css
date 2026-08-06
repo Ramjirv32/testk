@@ -1,0 +1,381 @@
+input[type="radio"]
+{
+    width: auto !important;
+}
+.dynamic-questions-container select
+{
+    padding: 10px;
+    width: 100%
+}
+.dynamic-questions-container label, input
+{
+    width: 100%;
+    margin-bottom: 10px !important;
+}
+.modal-body h3
+{
+    text-align: left !important;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+#priority-error
+{
+    width: 400px;
+}
+.text-danger
+{
+    text-align: left !important;
+    margin-bottom: 10px !important;
+    width: 100%
+}
+.country-error
+{
+    text-align: left !important;
+}
+.modal-body, .modal-footer
+{
+    padding: 0px !important;
+}
+.btn-close
+{
+    color: #fff !important;
+}
+.modal-title
+{
+    color: #fff !important;
+}
+.card
+{
+padding: 20px !important;
+margin-bottom: 0px !important;
+}
+.fieldlabels
+{
+    width: 100% !important;
+}
+.form-control
+{
+    width: 100% !important;
+}
+.inner_form_ckeck
+{
+    width: 32%;
+    float: left;
+    margin-right: 0px !important;
+    margin-bottom: 15px !important
+}
+.form-check #msform input, #msform textarea
+{
+    width: auto !important;
+}
+.inner_form_section
+{
+    margin-bottom: 15px;
+}
+.inner_form_section p
+{
+    font-size:16px;
+    color: #616161;
+    margin: 10px 0px;
+    text-align: left !important;
+}
+.form-select
+{
+width: 100%;
+margin-top: 20px;
+padding: 10px;
+}
+.form_row
+{
+display: flex;
+margin: auto;
+justify-content: center;
+
+}
+.row_display
+{
+display: flex;
+justify-content: space-between;
+}
+.form_width
+{
+width: 700px;
+padding: 20px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.progress-bar {
+display: -ms-flexbox;
+display: flex;
+-ms-flex-direction: column;
+flex-direction: column;
+-ms-flex-pack: center;
+justify-content: center;
+color: #fff;
+text-align: center;
+white-space: nowrap;
+background: linear-gradient(to right, #9a3197, #E084CD);
+
+transition: width .6s ease;
+}
+.progress {
+display: -ms-flexbox;
+display: flex;
+height: 1rem;
+overflow: hidden;
+font-size: .75rem;
+background-color: #e9ecef;
+border-radius: .25rem;
+}
+
+.progress-bar-animated {
+-webkit-animation: progress-bar-stripes 1s linear infinite;
+animation: progress-bar-stripes 1s linear infinite;
+}
+
+.progress-bar-striped {
+background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+background-size: 1rem 1rem;
+}
+
+@keyframes progress-bar-stripes
+{
+0% {
+background-position: 1rem 0;
+}
+100% {
+background-position: 0 0;
+}
+}
+.card p
+{
+text-align: center;
+}
+#heading {
+text-transform: uppercase;
+color: #070642;
+font-weight: 500;
+font-size: 26px;
+text-align: center;
+margin-bottom: 15px
+}
+
+#msform {
+text-align: center;
+position: relative;
+margin-top: 20px
+}
+
+#msform fieldset {
+background: white;
+border: 0 none;
+border-radius: 0.5rem;
+box-sizing: border-box;
+width: 100%;
+margin: 0;
+position: relative
+}
+.form-check-input:checked {
+background-color: #0d6efd !important;
+border-color: #0d6efd !important;
+}
+.form-card {
+text-align: left
+}
+
+#msform fieldset:not(:first-of-type) {
+display: none
+}
+.form-check-label
+{
+margin-left: 10px;
+margin-top: 5px;
+}
+.form-check-input
+{
+width: auto !important;
+}
+#msform input,
+#msform textarea {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 0px;
+width: 100%;
+box-sizing: border-box;
+font-family: montserrat;
+color: #2C3E50;
+background-color: transparent;
+font-size: 16px;
+letter-spacing: 1px
+}
+
+#msform input:focus,
+#msform textarea:focus {
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+border: 1px solid #9a3197;
+outline-width: 0
+}
+
+#msform .action-button {
+width: 100px;
+background: #9a3197;
+font-weight: bold;
+color: white;
+border: 0 none;
+border-radius: 0px;
+cursor: pointer;
+padding: 10px 5px;
+margin: 0px 0px 0px 0px;
+float: right
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+background-color: #311B92
+}
+
+#msform .action-button-previous {
+width: 100px;
+background: #616161;
+font-weight: bold;
+color: white;
+border: 0 none;
+border-radius: 0px;
+cursor: pointer;
+padding: 10px 5px;
+margin: 0px 10px 0px 0px;
+float: right
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+background-color: #000000
+}
+
+.card {
+z-index: 0;
+border: none;
+position: relative
+}
+
+.fs-title {
+font-size: 20px;
+color: #070642;
+margin-bottom: 15px;
+font-weight: normal;
+text-align: left;
+font-weight: 500;
+}
+
+.purple-text {
+color: #9a3197;
+font-weight: normal
+}
+
+.steps {
+font-size: 25px;
+color: gray;
+margin-bottom: 10px;
+font-weight: normal;
+text-align: right
+}
+
+.fieldlabels {
+color: #000;
+text-align: left;
+}
+
+#progressbar {
+margin-bottom: 20px;
+overflow: hidden;
+color: lightgrey
+}
+
+#progressbar .active {
+color: #9a3197
+}
+
+#progressbar li {
+list-style-type: none;
+font-size: 15px;
+width: 16%;
+float: left;
+position: relative;
+font-weight: 400
+}
+
+#progressbar #account:before {
+font-family: FontAwesome;
+content: ""
+}
+
+#progressbar #personal:before {
+font-family: FontAwesome;
+content: ""
+}
+
+#progressbar #payment:before {
+font-family: FontAwesome;
+content: ""
+}
+
+#progressbar #confirm:before {
+font-family: FontAwesome;
+content: ""
+}
+
+#progressbar li:before {
+width: 50px;
+height: 50px;
+line-height: 45px;
+display: block;
+font-size: 20px;
+color: #ffffff;
+background: lightgray;
+border-radius: 50%;
+margin: 0 auto 10px auto;
+padding: 2px
+}
+
+#progressbar li:after {
+content: '';
+width: 100%;
+height: 2px;
+background: lightgray;
+position: absolute;
+left: 0;
+top: 25px;
+z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+background: #9a3197;
+color: #fff;
+}
+
+.progress {
+height: 20px
+}
+
+.progress-bar {
+background-color: #9a3197
+}
+
+.fit-image {
+width: 100%;
+object-fit: cover
+}
+
+#progressbar .active .progress_ptag
+{
+color: #fff !important;
+margin-top: -45px
+}
+.progress_ptag
+{
+margin-top: -45px;
+color: #000;
+}

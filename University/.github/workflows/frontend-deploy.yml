@@ -1,0 +1,34 @@
+
+name: Next.js Docker Pull & Run
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Verify runner
+        run: |
+          whoami
+          hostname
+          docker --version
+      - name: Pull latest Docker image
+        run: |
+          docker pull ramjirv3217/tru-university-frontend:latest
+      - name: Stop old container (if exists)
+        run: |
+          docker stop tru-university-frontend || true
+          docker rm tru-university-frontend || true
+      - name: Run new container
+        run: |
+          docker run -d \
+            --name tru-university-frontend \
+            -p 3000:3000 \
+            --restart unless-stopped \
+            ramjirv3217/tru-university-frontend:latest
+      - name: Verify container is running
+        run: |
+          docker ps | grep tru-university-frontend

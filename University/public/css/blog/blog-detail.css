@@ -1,0 +1,152 @@
+
+
+.blog_detail_img {
+  background: #faf4ec;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blog_comments h2 {
+  color: #070642;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.blog_icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.blog_img {
+  margin: 20px 0;
+}
+
+.blog_img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog_detail_img blockquote {
+  border-left: 4px solid #9a3197;
+  padding-left: 20px;
+  margin: 20px 0;
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+}
+
+.blog_detail_content {
+  margin-top: 30px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.blog_detail_content h3 {
+  color: #070642;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 25px 0 15px 0;
+}
+
+.blog_detail_content p {
+  margin: 15px 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.blog_detail_content ul,
+.blog_detail_content ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.blog_detail_content li {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.my-custom-ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.blog_latest_content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 100px;
+}
+
+.blog_latest_content h4 {
+  color: #070642;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #9a3197;
+  padding-bottom: 10px;
+}
+
+.blog_detail_ul_li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog_detail_ul_li li {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.blog_detail_ul_li li:last-child {
+  border-bottom: none;
+}
+
+.blog_detail_ul_li li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.blog_detail_ul_li li a:hover {
+  color: #9a3197;
+}
+
+@media (max-width: 992px) {
+  .blog_latest_content {
+    margin-top: 30px;
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog_detail_img {
+    padding: 20px;
+  }
+
+  .blog_comments h2 {
+    font-size: 24px;
+  }
+
+  .blog_detail_content h3 {
+    font-size: 20px;
+  }
+
+  .blog_latest_content {
+    margin-top: 30px;
+  }
+}

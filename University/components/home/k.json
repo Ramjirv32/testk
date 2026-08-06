@@ -1,0 +1,467 @@
+{
+  "_id": {
+    "$oid": "69cca5f3c2fa6a3635583604"
+  },
+  "college_name": "Karunya Institute of Technology and Sciences",
+  "country": "India",
+  "approval_status": "pending",
+  "created_at": {
+    "$date": "2026-04-01T04:58:27.072Z"
+  },
+  "updated_at": {
+    "$date": "2026-04-01T04:58:27.072Z"
+  },
+  "basic_info": {
+    "college_name": "Karunya Institute of Technology and Sciences",
+    "short_name": "KITS",
+    "established": 1986,
+    "institution_type": "Private Deemed-to-be University",
+    "country": "India",
+    "location": "Coimbatore, Tamil Nadu",
+    "website": "https://www.karunya.edu",
+    "about": "Karunya Institute of Technology and Sciences (KITS) is a residential private deemed-to-be university founded by D. G. S. Dhinakaran and Paul Dhinakaran. It focuses on engineering, agriculture, management, and sciences with a mission to provide solutions for human problems through research and innovation.",
+    "summary": "Established in 1986 and granted deemed university status in 2004, Karunya is known for its sprawling 700-acre campus in Coimbatore and its NAAC A++ accreditation. It offers a wide range of UG, PG, and PhD programs, particularly strong in Engineering and Agriculture.",
+    "rankings": {
+      "nirf_latest": "101-150 (University), 101-150 (Engineering), 151-200 (Overall) for 2025",
+      "nirf_previous": "101-150 (University), 101-150 (Engineering), 151-200 (Overall) for 2024",
+      "qs_world": "694 (Asia 2026), 1401-1500 (Sustainability 2026)",
+      "national_rank": "82 (IIRF Deemed University 2025)",
+      "state_rank": "12 (Overall in Tamil Nadu 2025)",
+      "guessed_data": false
+    },
+    "student_statistics": {
+      "total_enrollment": 8491,
+      "ug_students": 5346,
+      "pg_students": 2545,
+      "phd_students": 600,
+      "annual_intake": 1260,
+      "male_percent": 63,
+      "female_percent": 37,
+      "total_ug_courses": 34,
+      "total_pg_courses": 25,
+      "total_phd_courses": 18,
+      "guessed_data": true
+    },
+    "faculty_staff": {
+      "total_faculty": 452,
+      "student_faculty_ratio": 15.2,
+      "phd_faculty_percent": 85,
+      "guessed_data": true
+    },
+    "student_history": {
+      "student_count_comparison_last_3_years": {
+        "latest_year": -1,
+        "previous_year": -1,
+        "year_before_previous": -1
+      },
+      "international_students": 25,
+      "guessed_data": true,
+      "categorywise_student_comparison_last_3_years": [
+        {
+          "year": "2026",
+          "ug_students": 5346,
+          "pg_students": 2545,
+          "phd_students": 600,
+          "international_students": 25,
+          "domestic_students": 8466,
+          "male_students": 5349,
+          "female_students": 3142
+        },
+        {
+          "year": "2025",
+          "ug_students": 5346,
+          "pg_students": 2545,
+          "phd_students": 600,
+          "international_students": 25,
+          "domestic_students": 8466,
+          "male_students": 5349,
+          "female_students": 3142
+        },
+        {
+          "year": "2024",
+          "ug_students": 5000,
+          "pg_students": 2215,
+          "phd_students": 500,
+          "international_students": 20,
+          "domestic_students": 7695,
+          "male_students": 4860,
+          "female_students": 2855
+        }
+      ]
+    },
+    "accreditations": [
+      {
+        "body": "NAAC",
+        "grade": "A++",
+        "year": 2022
+      },
+      {
+        "body": "NBA",
+        "grade": "Accredited",
+        "year": 2024
+      }
+    ],
+    "affiliations": "UGC, AICTE, ICAR",
+    "recognition": "Deemed to be University under Section 3 of UGC Act, 1956",
+    "campus_area": "700 acres",
+    "contact_info": {
+      "phone": "+91 422 2614300",
+      "email": "admissions@karunya.edu",
+      "address": "Karunya Nagar, Coimbatore - 641 114, Tamil Nadu, India"
+    },
+    "sources_verified": [
+      "https://www.karunya.edu",
+      "https://www.shiksha.com/university/karunya-institute-of-technology-and-sciences-coimbatore-939",
+      "https://www.timeshighereducation.com/world-university-rankings/karunya-institute-technology-and-sciences",
+      "https://www.topuniversities.com/universities/karunya-institute-technology-sciences"
+    ]
+  },
+  "programs": {
+    "ug_programs": [],
+    "pg_programs": [],
+    "phd_programs": [],
+    "departments": [],
+    "total_programs_count": -1,
+    "sources_verified": []
+  },
+  "placements": {
+    "guessed_data": false,
+    "data_year": "2025",
+    "sources": [
+      "https://www.karunya.edu/placements",
+      "https://www.shiksha.com/university/karunya-institute-of-technology-and-sciences-coimbatore-939/placement",
+      "https://www.careers360.com/university/karunya-institute-of-technology-and-sciences-coimbatore/placement",
+      "https://www.collegedekho.com/colleges/karunya-university/placement"
+    ],
+    "placements": {
+      "year": "2025",
+      "highest_package": 24.4,
+      "average_package": 4.2,
+      "median_package": 3.5,
+      "package_currency": "LPA",
+      "placement_rate_percent": 85,
+      "total_students_placed": 1478,
+      "total_companies_visited": 375,
+      "graduate_outcomes_note": "A significant trend noted in 2025 was the rise in 'Super Dream' offers (10+ LPA) primarily in AI/ML and CSE, while Mechanical Engineering recorded the highest individual peak salary."
+    },
+    "placement_comparison_last_3_years": [
+      {
+        "year": "2026",
+        "average_package": 4.5,
+        "employment_rate_percent": 85,
+        "package_currency": "LPA"
+      },
+      {
+        "year": "2025",
+        "average_package": 4.2,
+        "employment_rate_percent": 85,
+        "package_currency": "LPA"
+      },
+      {
+        "year": "2024",
+        "average_package": 3.5,
+        "employment_rate_percent": 80,
+        "package_currency": "LPA"
+      }
+    ],
+    "gender_based_placement_last_3_years": [
+      {
+        "year": "2025",
+        "male_placed": -1,
+        "female_placed": -1,
+        "male_percent": 80,
+        "female_percent": 80
+      }
+    ],
+    "sector_wise_placement_last_3_years": [
+      {
+        "year": "2025",
+        "sector": "IT & Software",
+        "companies": [
+          "Google",
+          "Infosys",
+          "TCS",
+          "Accenture",
+          "Zoho"
+        ],
+        "percent": 65
+      },
+      {
+        "year": "2025",
+        "sector": "Core Engineering",
+        "companies": [
+          "Alstom",
+          "Renault Nissan",
+          "L&T",
+          "Bosch"
+        ],
+        "percent": 20
+      },
+      {
+        "year": "2025",
+        "sector": "Management & Consulting",
+        "companies": [
+          "Deloitte",
+          "EY",
+          "JP Morgan Chase",
+          "PwC"
+        ],
+        "percent": 15
+      }
+    ],
+    "top_recruiters": [
+      "Google",
+      "Amazon",
+      "Infosys",
+      "TCS",
+      "Accenture",
+      "Alstom",
+      "Zoho",
+      "Deloitte",
+      "Capgemini",
+      "IBM"
+    ],
+    "placement_highlights": "Karunya University saw a 12% year-over-year increase in average packages for tech branches in 2025, reaching a peak of 24.4 LPA in Mechanical Engineering. The placement drive successfully secured over 1,900 offers for 1,478 students, with strong participation from 375+ companies across IT and core sectors."
+  },
+  "fees": {
+    "guessed_data": false,
+    "data_year": "2026",
+    "sources": [
+      "https://admissions.karunya.edu/sites/admissions/files/uploads/downloads/2025/Fees/INR/All%20B.Tech.%20Fee%20Structure%202025-26%20-%20Regular%20-%20Indian.pdf",
+      "https://admissions.karunya.edu/sites/admissions/files/uploads/downloads/2024/Fees/INR/B.Tech.%20Fee%20Structure%202024-25-Indian.pdf",
+      "https://admissions.karunya.edu/sites/admissions/files/uploads/downloads/2024/Fees/INR/M.Tech.%20Fee%20Structure%202024-25%20-%20Indian.pdf",
+      "https://admissions.karunya.edu/sites/admissions/files/uploads/downloads/2024/Fees/INR/Ph.D.%20Fee%20Structure%202024-25%20-%20Indian.pdf"
+    ],
+    "fees": {
+      "UG": {
+        "per_year": 303500,
+        "total_course": 1224000,
+        "currency": "INR"
+      },
+      "PG": {
+        "per_year": 116500,
+        "total_course": 233000,
+        "currency": "INR"
+      },
+      "hostel_per_year": 51000
+    },
+    "fees_by_year": [
+      {
+        "year": "2026",
+        "UG": {
+          "per_year": 303500,
+          "total_course": 1224000,
+          "currency": "INR"
+        },
+        "PG": {
+          "per_year": 116500,
+          "total_course": 233000,
+          "currency": "INR"
+        },
+        "hostel_per_year": 51000
+      },
+      {
+        "year": "2025",
+        "UG": {
+          "per_year": 296000,
+          "total_course": 1184000,
+          "currency": "INR"
+        },
+        "PG": {
+          "per_year": 116500,
+          "total_course": 233000,
+          "currency": "INR"
+        },
+        "hostel_per_year": 47800
+      },
+      {
+        "year": "2024",
+        "UG": {
+          "per_year": 296000,
+          "total_course": 1184000,
+          "currency": "INR"
+        },
+        "PG": {
+          "per_year": 116500,
+          "total_course": 233000,
+          "currency": "INR"
+        },
+        "hostel_per_year": 45000
+      }
+    ],
+    "fees_note": "The fee structure varies by specialization, with B.Tech CSE (AIML) being the most expensive at ₹12.24 Lakhs total. M.Tech and PhD fees remained relatively stable, with scholarship slabs available based on entrance exam performance.",
+    "scholarships_detail": [
+      {
+        "name": "KEE Merit Scholarship",
+        "amount": 120000,
+        "currency_type": "INR",
+        "eligibility": "Score in Karunya Entrance Exam (KEE)",
+        "provider": "Karunya Institute of Technology and Sciences"
+      },
+      {
+        "name": "GATE Scholarship",
+        "amount": 100000,
+        "currency_type": "INR",
+        "eligibility": "Valid GATE score, includes ₹10,000 monthly stipend",
+        "provider": "AICTE / KITS"
+      }
+    ]
+  },
+  "infrastructure": {
+    "guessed_data": false,
+    "sources_verified": [
+      "https://karunya.edu/nirf",
+      "https://admissions.karunya.edu/sites/admissions/files/uploads/Scholarship/Founders%E2%80%99%20Scholarship%202025.pdf",
+      "https://admissions.karunya.edu/scholarships",
+      "https://karunya.edu/mandatorydisclosure",
+      "https://issuu.com/karunyauniversity/docs/handbook_2024-25"
+    ],
+    "infrastructure": [
+      {
+        "facility": "Campus Area",
+        "details": "728-acre green campus located in Coimbatore, Tamil Nadu."
+      },
+      {
+        "facility": "Research Centers",
+        "details": "Includes high-end IBM PureFlex System, Blade servers, Rack servers, and specialized labs for Water Research, Food Processing, Nanotechnology, and Drone & Aerospace Research."
+      },
+      {
+        "facility": "Sports Complex",
+        "details": "Facilities for Badminton, Basketball, Cricket, Football, Hockey, Volleyball, Ball Badminton, Kabaddi, Table Tennis, and an Archery Arena."
+      },
+      {
+        "facility": "Auditoriums",
+        "details": "Multiple auditoriums including Ebenezer Auditorium (3,862 sq.m plinth area) and Emmanuel Auditorium."
+      },
+      {
+        "facility": "Dining Halls",
+        "details": "16 separate dining halls serving South Indian, North Indian, and International cuisines."
+      }
+    ],
+    "hostel_details": {
+      "available": true,
+      "total_capacity": 8000,
+      "type": "In-campus residential facilities with single, double, and four-seater rooms (AC and Non-AC options)."
+    },
+    "library_details": {
+      "total_books": 142341,
+      "journals": 2596,
+      "e_resources": 211652,
+      "area_sqft": 32291.73
+    },
+    "transport_details": {
+      "buses": 15,
+      "routes": 12
+    },
+    "scholarships": [
+      {
+        "name": "Founder's Scholarship 2025-26",
+        "amount": 100,
+        "currency_type": "INR",
+        "eligibility": "Indian Christian students, academic excellence, and financial need (100% tuition fee waiver).",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit/need/specific",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "B.Tech Merit Scholarship (95% in PCM/PCB)",
+        "amount": 120000,
+        "currency_type": "INR",
+        "eligibility": "95% in PCM/PCB in 12th standard.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "B.Tech Merit Scholarship (90% in PCM/PCB)",
+        "amount": 60000,
+        "currency_type": "INR",
+        "eligibility": "90% in PCM/PCB in 12th standard.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "B.Tech Merit Scholarship (80% in PCM/PCB)",
+        "amount": 40000,
+        "currency_type": "INR",
+        "eligibility": "80% in PCM/PCB in 12th standard.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "Scholarship for Girl Students",
+        "amount": 40000,
+        "currency_type": "INR",
+        "eligibility": "Girl students with 70% in PCM/PCB in 12th standard.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "specific",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "JEE Main Qualified Scholarship",
+        "amount": 120000,
+        "currency_type": "INR",
+        "eligibility": "Candidates with 85 percentile and above in JEE Main.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "M.Tech Merit Scholarship (9.0 CGPA)",
+        "amount": 90000,
+        "currency_type": "INR",
+        "eligibility": "9.0 CGPA or 90% in Undergraduate degree.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "GATE Scholarship",
+        "amount": 100000,
+        "currency_type": "INR",
+        "eligibility": "GATE qualified candidates for M.Tech programs (Rs. 10,000 per month).",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "Wards of Alumnus/Staff/Pastors",
+        "amount": 40000,
+        "currency_type": "INR",
+        "eligibility": "Wards of KITS alumni, staff, pastors, or missionaries with 60% in PCM/PCB.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "specific",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "International Merit Scholarship (M.Tech)",
+        "amount": 1500,
+        "currency_type": "USD",
+        "eligibility": "NRI/Foreign Nationals with 9.0 CGPA or 90% in UG.",
+        "provider": "Karunya Institute of Technology and Sciences",
+        "type": "merit",
+        "application_deadline": "N/A"
+      },
+      {
+        "name": "Visvesvaraya PhD Scheme",
+        "amount": 38750,
+        "currency_type": "INR",
+        "eligibility": "Full-time PhD scholars focusing on AI, Blockchain, Semiconductors (stipend per month).",
+        "provider": "MeitY, Govt. of India",
+        "type": "merit/specific",
+        "application_deadline": "N/A"
+      }
+    ]
+  },
+  "_metadata": {
+    "scraped_at": "2026-04-01T04:58:27.070955",
+    "total_time": 37.099244117736816,
+    "errors": {},
+    "validation_warnings": [],
+    "college_name": "N/A",
+    "country": "N/A",
+    "schema_version": "v1.1"
+  }
+}

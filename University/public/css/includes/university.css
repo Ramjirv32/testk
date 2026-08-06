@@ -1,0 +1,105 @@
+.load-more-container {
+    background: #fff;
+    margin: 20px auto;
+    position: relative;
+}
+.load-more-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+.load-more-container ul:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.load-more-container ul li {
+    width: calc(24% - 10px);
+    float: left;
+    margin-right: 20px;
+}
+.load-more-container ul li:nth-child(1n + 9) {
+    max-height: 0;
+    opacity: 0;
+    transition: 0.1s ease-in;
+}
+.load-more-container .load-more-btn {
+    width: 150px;
+    line-height: 40px;
+    border-radius: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #9a3197;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 50px;
+}
+.load-more-container .load-more-btn:hover {
+    background: #9a3197;
+}
+.load-more-container .load-more-btn .loaded {
+    display: none;
+}
+.load-more-container #load-more {
+    display: none;
+}
+.load-more-container #load-more:checked ~ ul li:nth-child(1n + 9) {
+    max-height: 999px;
+    opacity: 1;
+    transition: 0.2s ease-in;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .loaded {
+    display: block;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .unloaded {
+    display: none;
+}
+
+.copy_write_container {
+    border-top: 1px solid #fff;
+}
+.whoare_section img {
+    border-radius: 10px;
+}
+.content p {
+    line-height: 25px;
+}
+.blog_main {
+    height: 360px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+.owl-carousel .item {
+    height: 410px !important;
+}
+.testimonial_img_heading img {
+    width: 30% !important;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.subpage_footer .footer_ul_li li a {
+    color: #000;
+}
+.subpage_footer {
+    background-color: #fff;
+}
+.subpage_footer .footer_link h5 {
+    color: #fff;
+}
+.subpage_footer .footer_ul_li li {
+    color: #fff;
+}
+.subpage_footer .footer_ul_li_icon li {
+    border: 1px solid #fff;
+}
+.footer_copyright p {
+    color: #fff;
+}
+.footer_copyright p a {
+    color: #9a3197;
+}
+svg:not(:host).svg-inline--fa,
+svg:not(:root).svg-inline--fa {
+    color: #fff;
+}

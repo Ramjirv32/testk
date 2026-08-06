@@ -1,0 +1,80 @@
+.careerSection {
+  padding: 60px 0 80px;
+  background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+  min-height: 100vh;
+}
+
+.formCard {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 30px 70px rgba(7, 6, 66, 0.15);
+  transition: all 0.4s ease;
+}
+
+.formCard:hover {
+  box-shadow: 0 40px 90px rgba(7, 6, 66, 0.2);
+  transform: translateY(-4px);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.field label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #070642;
+}
+
+.input,
+.textarea,
+.select,
+.fileInput {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #dfe4ea;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.submitWrap {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.submitButton {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 48px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.illustration {
+  text-align: center;
+}
+
+.illustration img {
+  max-width: 100%;
+  border-radius: 24px;
+}

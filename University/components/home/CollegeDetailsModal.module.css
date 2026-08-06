@@ -1,0 +1,457 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 20px 30px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.tab {
+  background: white;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+  color: #666;
+}
+
+.tab:hover {
+  background: #f0f0f0;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.content {
+  padding: 30px;
+  min-height: 300px;
+}
+
+.tabContent {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #667eea;
+}
+
+.card p {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.highlight {
+  color: #764ba2;
+  font-weight: 600;
+}
+
+.summaryBox {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.summaryBox h3 {
+  margin: 0 0 15px 0;
+  color: #667eea;
+}
+
+.summaryBox p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h3 {
+  color: #667eea;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.infoBox {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.infoBox strong {
+  color: #667eea;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.deptList,
+.courseList {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.deptList h4,
+.courseList h4 {
+  margin: 0 0 15px 0;
+  color: #667eea;
+}
+
+.deptList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.deptList li {
+  padding: 10px 0;
+  padding-left: 20px;
+  position: relative;
+  color: #555;
+}
+
+.deptList li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+}
+
+.courseItem {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 3px solid #667eea;
+}
+
+.courseItem strong {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.courseItem p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.placementGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.placementCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+  transition: all 0.2s;
+}
+
+.placementCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.placementCard h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.placementValue {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.recruitersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.recruiterTag {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  padding: 10px 16px;
+  border-radius: 20px;
+  color: #667eea;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.facilitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.facilityCard {
+  background: white;
+  border: 2px solid #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.facilityCard:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.facilityCard h4 {
+  margin: 0 0 15px 0;
+  color: #667eea;
+  font-size: 16px;
+}
+
+.facilityCard p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.facilityCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.facilityCard li {
+  padding: 6px 0;
+  color: #555;
+  font-size: 13px;
+}
+
+.contactCard {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.contactCard h3 {
+  margin: 0 0 20px 0;
+  color: #667eea;
+  font-size: 20px;
+}
+
+.contactCard p {
+  margin: 12px 0;
+  color: #555;
+  line-height: 1.8;
+}
+
+.contactCard strong {
+  color: #667eea;
+}
+
+.contactCard a {
+  color: #667eea;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.contactCard a:hover {
+  border-bottom-color: #667eea;
+}
+
+.socialLinks {
+  margin-top: 25px;
+}
+
+.socialLinks h3 {
+  margin: 0 0 15px 0;
+  color: #667eea;
+  font-size: 18px;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.socialLink {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .modal {
+    max-height: 95vh;
+    margin: 10px;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .tabs {
+    padding: 15px 20px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .overviewGrid,
+  .placementGrid,
+  .facilitiesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

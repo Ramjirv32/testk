@@ -1,0 +1,50 @@
+.main-content {
+    padding: 20px;
+}
+
+.survey-details {
+    border-radius: 8px;
+    background-color: #ede4d3 !important;
+}
+.survey-details-header {
+    background-color: #dd6236 !important;
+}
+.card-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.card-body {
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    border-color: #e0e0e0;
+}
+.card-body h3 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+}
+
+.list-group-item strong {
+    color: #007bff;
+}
+
+.badge {
+    font-size: 0.9rem;
+}
+
+.text-muted {
+    font-style: italic;
+}
+
+.text-secondary {
+    color: #6c757d !important;
+}
+
+.text-dark {
+    color: #343a40 !important;
+}

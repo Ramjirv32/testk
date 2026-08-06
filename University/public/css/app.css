@@ -1,0 +1,28 @@
+@import './includes/all.min.css';
+@import './includes/bootstrap.min.css';
+@import './includes/owl.carousel.min.css';
+@import './includes/style.css';
+@import './includes/aos.css';
+@import './includes/toastr.min.css';
+@import './includes/animate.css';
+@import './auth/login.css';
+@import './includes/blue-theme.css';
+@import './includes/bordered-theme.css';
+@import './includes/main.css';
+@import './includes/responsive.css';
+@import './includes/semi-dark.css';
+@import './includes/pace.min.css';
+@import './includes/font-awesome.css';
+@import './includes/bootstrap-extended.css';
+
+*{
+    scrollbar-width: thin;
+}
+
+body
+
+{
+
+ background-color: #f7eedd !important;
+ 
+}

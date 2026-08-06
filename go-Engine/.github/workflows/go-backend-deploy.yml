@@ -1,0 +1,44 @@
+name: Go Backend Auto Deploy (On-Prem Safe)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Verify runner
+        run: |
+          whoami
+          hostname
+          pwd
+
+      - name: Pull latest code
+        run: |
+          cd /home/ubuntu20-1/Desktop/v3/go-Engine
+          git fetch origin
+          git reset --hard origin/main
+          git log --oneline -1
+
+      - name: Create .env from ok.env
+        run: |
+          cd /home/ubuntu20-1/Desktop/v3/go-Engine
+          cp ok.env .env
+          chmod 600 .env
+          echo "✅ .env created from ok.env"
+
+      - name: Build Go backend safely
+        run: |
+          cd /home/ubuntu20-1/Desktop/v3/go-Engine
+          go mod tidy
+          go build -o go-backend.new
+          mv go-backend.new go-backend
+          chmod +x go-backend
+          ls -lh go-backend
+
+      - name: Restart backend service
+        run: |
+          sudo systemctl restart go-backend
+# m

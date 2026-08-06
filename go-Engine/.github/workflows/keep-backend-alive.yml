@@ -1,0 +1,35 @@
+name: Keep Backend Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Backend API
+        run: |
+          echo "Pinging backend at $(date)"
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://go-engine-ex32.onrender.com/api/health)
+          echo "Response status code: $response"
+          
+          if [ $response -eq 200 ] || [ $response -eq 304 ]; then
+            echo "✅ Backend is alive and responding"
+          else
+            echo "⚠️ Backend returned status code: $response"
+          fi
+
+      - name: Fetch College Data
+        run: |
+          echo "Fetching college data at $(date)"
+          response=$(curl -s -o /dev/null -w "%{http_code}" "https://go-engine-ex32.onrender.com/api/college-statistics?college_name=IIT%20Delhi")
+          echo "Response status code: $response"
+          
+          if [ $response -eq 200 ] || [ $response -eq 304 ]; then
+            echo "✅ Backend data fetch successful"
+          else
+            echo "⚠️ Data fetch returned status code: $response"
+          fi

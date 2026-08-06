@@ -1,0 +1,110 @@
+.copy_write_container {
+    border-top: 1px solid #fff;
+}
+.content p {
+    margin-bottom: 10px;
+}
+.mb-30
+{
+    margin-bottom:30px;
+}
+
+.content a {
+    color: #9a3197;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.subpage_footer .footer_ul_li li a {
+    color: #fff;
+}
+
+.subpage_footer {
+    background-color: #2C2C2C;
+}
+
+.subpage_footer .footer_link h5 {
+    color: #fff;
+}
+
+.subpage_footer .footer_ul_li li {
+    color: #fff;
+}
+
+.subpage_footer .footer_ul_li_icon li {
+    border: 1px solid #fff;
+}
+
+.footer_copyright p {
+    color: #fff;
+}
+
+.footer_copyright p a {
+    color: #9a3197;
+}
+
+svg:not(:host).svg-inline--fa,
+svg:not(:root).svg-inline--fa {
+    color: #fff;
+}
+
+.owl-carousel .item
+    {
+        height: 360px !important;
+    }
+    .whoare_section img
+    {
+        border-radius: 10px;
+    }
+    .content p
+    {
+        line-height: 25px;
+    }
+    .blog_main
+    {
+        height: auto !important;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    }
+    .testimonial_img_heading h5
+    {
+font-size: 20px;
+margin-top: 20px;
+color: #070642;
+    }
+    .testimonial_img_heading img
+{
+  width: 30% !important;
+  margin: auto;
+  display: flex;
+  margin-top: 15px !important;
+  align-items: center;
+}
+
+.school_heading
+{
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.acadamic_img
+{
+    display: flex;
+    align-items: center;
+}
+.acadamic_img img
+{
+    width: 50px;
+    margin-right: 10px;
+}
+
+.blog_detail_content p{
+    color: #000 !important;
+}
+
+.blog_detail_content p strong{
+    font-size: 24px;
+}
+
+.blog_detail_content ul {
+    list-style: circle;
+}

@@ -1,0 +1,58 @@
+<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="80" r="85" fill="#E8F4FD" opacity="0.5"/>
+  
+  <!-- Robot Head -->
+  <rect x="50" y="20" width="100" height="80" rx="10" fill="#5B9FFF" stroke="#2563EB" stroke-width="2"/>
+  
+  <!-- Robot Eyes -->
+  <circle cx="70" cy="40" r="8" fill="#FFFFFF"/>
+  <circle cx="70" cy="40" r="5" fill="#2563EB"/>
+  <circle cx="130" cy="40" r="8" fill="#FFFFFF"/>
+  <circle cx="130" cy="40" r="5" fill="#2563EB"/>
+  
+  <!-- Robot Mouth -->
+  <rect x="75" y="65" width="50" height="6" rx="3" fill="#2563EB"/>
+  
+  <!-- Robot Body -->
+  <rect x="40" y="105" width="120" height="80" rx="8" fill="#7DB3FF" stroke="#2563EB" stroke-width="2"/>
+  
+  <!-- Robot Left Arm -->
+  <g>
+    <rect x="15" y="125" width="25" height="50" rx="12" fill="#5B9FFF" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="27" cy="180" r="16" fill="#7DB3FF" stroke="#2563EB" stroke-width="2"/>
+  </g>
+  
+  <!-- Robot Right Arm -->
+  <g>
+    <rect x="160" y="125" width="25" height="50" rx="12" fill="#5B9FFF" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="173" cy="180" r="16" fill="#7DB3FF" stroke="#2563EB" stroke-width="2"/>
+  </g>
+  
+  <!-- Robot Center Chest Panel -->
+  <rect x="70" y="120" width="60" height="50" rx="5" fill="#5B9FFF" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="100" cy="130" r="4" fill="#FF6B9D"/>
+  <circle cx="100" cy="145" r="4" fill="#FF6B9D"/>
+  <circle cx="100" cy="160" r="4" fill="#FF6B9D"/>
+  
+  <!-- Robot Legs -->
+  <rect x="60" y="190" width="20" height="40" rx="8" fill="#5B9FFF" stroke="#2563EB" stroke-width="2"/>
+  <rect x="120" y="190" width="20" height="40" rx="8" fill="#5B9FFF" stroke="#2563EB" stroke-width="2"/>
+  
+  <!-- Glow effect -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Animated shine -->
+  <circle cx="100" cy="50" r="3" fill="#FFD700" filter="url(#glow)" opacity="0.6">
+    <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

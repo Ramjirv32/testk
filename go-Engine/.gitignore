@@ -1,0 +1,43 @@
+# Go binaries and build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/bin/
+/tmp/
+
+# Go test cache and coverage
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Vendor (if not using modules)
+vendor/
+
+# Air live reload temp files
+tmp/
+ok.env
+# Secrets
+ok.env
+*.env
+# Compiled binaries
+go-Engine-bin
+gobackend
+main
