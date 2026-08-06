@@ -8,31 +8,43 @@ exports.allocateTest = async (req, res) => {
   try {
     // Handle both 'id' and 'sub' fields from JWT (different JWT formats)
     let studentId = req.body.studentId || req.body.student_id || req.user?.id || req.user?.sub || '';
-    const studentEmail = req.body.student_email || req.body.studentEmail || '';
+    let studentEmail = req.body.student_email || req.body.studentEmail || '';
     const testType = req.body.testType || req.body.test_type;
     const subject = req.body.subject;
     const category = req.body.category;
     const level = req.body.level;
     const allocatedBy = req.user?.email || 'admin@gre.com';
-    const scheduledDate = req.body.scheduled_date;
+    let scheduledDate = req.body.scheduled_date;
+    if (!scheduledDate && req.body.scheduled_at) {
+      try {
+        scheduledDate = new Date(req.body.scheduled_at).toISOString().split('T')[0];
+      } catch {}
+    }
     const scheduledTime = req.body.scheduled_time || '09:00';
     const expiryDate = req.body.expiry_date || null;
     const expiryTime = req.body.expiry_time || null;
     const initialStatus = req.body.status || STATUSES.ASSIGNED;
 
-    if (!studentId && studentEmail) {
-      const studentResult = await pool.query('SELECT id FROM users WHERE email = $1', [studentEmail]);
-      if (studentResult.rows.length > 0) {
-        studentId = studentResult.rows[0].id;
+    // Resolve equivalent student ID and email from users table
+    if (studentId || studentEmail) {
+      const studentLookup = await pool.query(
+        `SELECT id, email FROM users WHERE LOWER(id) = LOWER($1) OR LOWER(email) = LOWER($1) OR LOWER(id) = LOWER($2) OR LOWER(email) = LOWER($2)`,
+        [studentId || '', studentEmail || '']
+      );
+      if (studentLookup.rows.length > 0) {
+        studentId = studentLookup.rows[0].id;
+        studentEmail = studentLookup.rows[0].email;
       }
     }
 
-    if (!studentId) {
+    if (!studentId && !studentEmail) {
       return res.status(400).json({
         success: false,
-        error: 'Student ID is required to allocate a test',
+        error: 'Student ID or email is required to allocate a test',
       });
     }
+
+    const checkDateStr = scheduledDate || new Date().toISOString().split('T')[0];
 
     // Server-side past date check (Bug 24)
     if (scheduledDate) {
@@ -45,22 +57,20 @@ exports.allocateTest = async (req, res) => {
       }
     }
 
-    // Duplicate schedule request check (Bug 21)
-    if (scheduledDate) {
-      const duplicateCheck = await pool.query(
-        `SELECT id FROM test_allocations
-         WHERE (student_id = $1 OR student_id = $2)
-           AND test_type = $3
-           AND (scheduled_date = $4 OR DATE(scheduled_at) = $4::date)
-           AND status IN ('REQUESTED', 'PENDING', 'APPROVED', 'SCHEDULED', 'ASSIGNED', 'IN_PROGRESS')`,
-        [studentId, studentEmail, testType, scheduledDate]
-      );
-      if (duplicateCheck.rows.length > 0) {
-        return res.status(409).json({
-          success: false,
-          error: 'You already have an active test scheduled for this date and test type.',
-        });
-      }
+    // Duplicate schedule check (Bug 21) — checks both ID and email for active test on same date & test type
+    const duplicateCheck = await pool.query(
+      `SELECT id FROM test_allocations
+       WHERE (LOWER(student_id) = LOWER($1) OR LOWER(student_id) = LOWER($2))
+         AND test_type = $3
+         AND (scheduled_date = $4 OR DATE(scheduled_at) = $4::date OR (scheduled_date IS NULL AND scheduled_at IS NULL))
+         AND status IN ('REQUESTED', 'PENDING', 'APPROVED', 'SCHEDULED', 'ASSIGNED', 'IN_PROGRESS')`,
+      [studentId, studentEmail, testType, checkDateStr]
+    );
+    if (duplicateCheck.rows.length > 0) {
+      return res.status(409).json({
+        success: false,
+        error: 'This student already has an active test allocated for this date and test type.',
+      });
     }
 
     let questionIds = [];
