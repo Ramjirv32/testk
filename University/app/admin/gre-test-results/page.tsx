@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { GRE_API_URL } from '@/lib/config';
@@ -140,6 +141,7 @@ export default function GreTestResultsPage() {
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#6c757d', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Status</th>
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#6c757d', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Score</th>
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#6c757d', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Created</th>
+                <th style={{ padding: '12px 16px', textAlign: 'center', fontSize: '11px', fontWeight: 700, color: '#6c757d', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -161,6 +163,27 @@ export default function GreTestResultsPage() {
                     {r.score_percent != null ? `${r.score_percent}%` : '—'}
                   </td>
                   <td style={{ padding: '12px 16px', fontSize: '12px', color: '#5a5a5a' }}>{formatDate(r.created_at)}</td>
+                  <td style={{ padding: '12px 16px', textAlign: 'center' }}>
+                    {r.status === 'COMPLETED' || r.score_percent != null ? (
+                      <Link
+                        href={`/user-dashboard/gre-result?allocation_id=${r.id}`}
+                        style={{
+                          padding: '6px 12px',
+                          backgroundColor: '#e61a8d',
+                          color: 'white',
+                          borderRadius: '6px',
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        View Scorecard
+                      </Link>
+                    ) : (
+                      <span style={{ color: '#999', fontSize: '12px' }}>—</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

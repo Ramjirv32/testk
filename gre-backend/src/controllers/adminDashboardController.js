@@ -792,8 +792,8 @@ exports.getTestResults = async (req, res) => {
 
     if (search) {
       whereParts.push(`(
-        u.name ILIKE $${idx} OR
-        u.email ILIKE $${idx} OR
+        COALESCE(u.name, a.student_id) ILIKE $${idx} OR
+        COALESCE(u.email, a.student_id) ILIKE $${idx} OR
         a.test_title ILIKE $${idx} OR
         a.test_type ILIKE $${idx} OR
         a.status ILIKE $${idx} OR
@@ -838,17 +838,21 @@ exports.getTestResults = async (req, res) => {
     const whereClause = whereParts.join(' AND ');
 
     const countRes = await pool.query(
-      `SELECT COUNT(*) FROM test_allocations a JOIN users u ON a.student_id = u.id WHERE ${whereClause}`,
+      `SELECT COUNT(*) FROM test_allocations a
+       LEFT JOIN users u ON (a.student_id = u.id OR LOWER(a.student_id) = LOWER(u.email))
+       WHERE ${whereClause}`,
       args
     );
     const totalCount = parseInt(countRes.rows[0].count) || 0;
 
     const dataQuery = `
-      SELECT a.id, a.ticket_id, a.student_id, u.name as student_name, u.email,
+      SELECT a.id, a.ticket_id, a.student_id,
+             COALESCE(u.name, CASE WHEN a.student_id LIKE '%@%' THEN SPLIT_PART(a.student_id, '@', 1) ELSE a.student_id END) as student_name,
+             COALESCE(u.email, CASE WHEN a.student_id LIKE '%@%' THEN a.student_id ELSE NULL END) as email,
              a.allocated_by, a.test_type, a.test_title, a.status, a.score_percent,
              a.scheduled_at, a.expires_at, a.created_at
       FROM test_allocations a
-      JOIN users u ON a.student_id = u.id
+      LEFT JOIN users u ON (a.student_id = u.id OR LOWER(a.student_id) = LOWER(u.email))
       WHERE ${whereClause}
       ORDER BY a.created_at DESC
       LIMIT $${idx} OFFSET $${idx + 1}`;
