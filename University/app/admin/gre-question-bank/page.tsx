@@ -13,7 +13,8 @@ interface Question {
   category: string;
   level: string;
   options: string[];
-  correct_option: string | number;
+  answer?: string;
+  correct_option?: string | number;
   explanation?: string;
   image_url?: string;
   question_image_url?: string;
@@ -25,10 +26,8 @@ const getFormattedImgUrl = (rawUrl?: string | null): string => {
   if (!rawUrl) return '';
   let url = String(rawUrl).trim();
   if (!url) return '';
-  let filename = url;
-  if (url.includes('/')) {
-    filename = url.split('/').pop() || url;
-  }
+  if (url.startsWith('http://localhost:11000/images/')) return url;
+  let filename = url.includes('/') ? url.split('/').pop() || url : url;
   try {
     filename = decodeURIComponent(filename);
   } catch {}
@@ -70,7 +69,7 @@ export default function QuestionBankPage() {
       if (filterLevel !== 'ALL') params.append('level', filterLevel);
 
       const res = await fetch(
-        `${API_URL}/api/admin/questions?${params.toString()}`,
+        `${GRE_API_URL}/api/admin/questions?${params.toString()}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -91,7 +90,7 @@ export default function QuestionBankPage() {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/questions/stats`, {
+      const res = await fetch(`${GRE_API_URL}/api/admin/questions/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -182,9 +181,14 @@ export default function QuestionBankPage() {
                 style={{ width: '100%', padding: '8px 12px', border: '1px solid #ede9e4', borderRadius: '8px', fontSize: '13px', backgroundColor: 'white', outline: 'none', fontFamily: 'inherit' }}
               >
                 <option value="ALL">All Subjects</option>
-                {stats && Object.keys(stats.by_subject).map((subject) => (
-                  <option key={subject} value={subject}>{subject}</option>
-                ))}
+                <option value="Quant">Quant</option>
+                <option value="Verbal">Verbal</option>
+                <option value="AWA">AWA</option>
+                {stats && Object.keys(stats.by_subject)
+                  .filter(s => !['Quant', 'Verbal', 'AWA'].includes(s))
+                  .map((subject) => (
+                    <option key={subject} value={subject}>{subject}</option>
+                  ))}
               </select>
             </div>
             <div>
@@ -276,6 +280,9 @@ export default function QuestionBankPage() {
                           src={getFormattedImgUrl(question.question_image_url || question.image_url)}
                           alt="Question Image"
                           style={{ maxWidth: '450px', maxHeight: '320px', objectFit: 'contain', borderRadius: '8px', border: '1px solid #ede9e4', backgroundColor: 'white', display: 'block' }}
+                          onError={(e) => {
+                            (e.currentTarget as HTMLElement).style.display = 'none';
+                          }}
                         />
                       </div>
                     )}
@@ -287,6 +294,9 @@ export default function QuestionBankPage() {
                           src={getFormattedImgUrl(question.answer_image_url)}
                           alt="Answer Image"
                           style={{ maxWidth: '450px', maxHeight: '320px', objectFit: 'contain', borderRadius: '8px', border: '1px solid #ede9e4', backgroundColor: 'white', display: 'block' }}
+                          onError={(e) => {
+                            (e.currentTarget as HTMLElement).style.display = 'none';
+                          }}
                         />
                       </div>
                     )}
@@ -294,19 +304,41 @@ export default function QuestionBankPage() {
                     <div style={{ marginBottom: '16px' }}>
                       <h4 style={{ fontWeight: 700, color: '#2d2d2d', marginBottom: '8px', fontSize: '13px' }}>Options</h4>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {question.options?.map((option, idx) => (
-                          <div
-                            key={idx}
-                            style={{
-                              padding: '8px 12px', borderRadius: '6px', fontSize: '13px',
-                              backgroundColor: idx === question.correct_option || String(idx) === String(question.correct_option) ? '#d1fae5' : '#f5f5f5',
-                              color: idx === question.correct_option || String(idx) === String(question.correct_option) ? '#065f46' : '#2d2d2d',
-                              border: idx === question.correct_option || String(idx) === String(question.correct_option) ? '1px solid #a7f3d0' : '1px solid #ede9e4',
-                            }}
-                          >
-                            {String.fromCharCode(65 + idx)}) {option}
-                          </div>
-                        ))}
+                        {question.options?.map((option, idx) => {
+                          const ansStr = String(question.answer || question.correct_option || '').trim();
+                          const letter = String.fromCharCode(65 + idx);
+                          const isCorrect = Boolean(
+                            ansStr && (
+                              ansStr.toUpperCase() === letter ||
+                              ansStr === String(idx) ||
+                              option.trim().toLowerCase() === ansStr.toLowerCase() ||
+                              option.trim().toLowerCase().startsWith(ansStr.toLowerCase())
+                            )
+                          );
+
+                          return (
+                            <div
+                              key={idx}
+                              style={{
+                                padding: '10px 14px', borderRadius: '8px', fontSize: '13px',
+                                backgroundColor: isCorrect ? '#ecfdf5' : 'white',
+                                color: isCorrect ? '#065f46' : '#2d2d2d',
+                                border: isCorrect ? '2px solid #10b981' : '1px solid #ede9e4',
+                                fontWeight: isCorrect ? 700 : 500,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                              }}
+                            >
+                              <span>{letter}) {option}</span>
+                              {isCorrect && (
+                                <span style={{ fontSize: '11px', fontWeight: 800, color: '#059669', backgroundColor: '#a7f3d0', padding: '3px 10px', borderRadius: '12px' }}>
+                                  ✓ Correct Answer
+                                </span>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
 

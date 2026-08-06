@@ -258,13 +258,28 @@ async function initializeTables() {
         message_text TEXT,
         attachment_url TEXT,
         attachment_type VARCHAR(50),
-        is_read BOOLEAN DEFAULT FALSE,
+        is_read BOOLEAN DEFAULT false,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
-      CREATE INDEX IF NOT EXISTS idx_ticket_chat_ticket_id ON ticket_chat_messages(ticket_id);
+      CREATE INDEX IF NOT EXISTS idx_ticket_chat_messages_ticket_id ON ticket_chat_messages(ticket_id);
       CREATE INDEX IF NOT EXISTS idx_ticket_chat_sender_role ON ticket_chat_messages(sender_role);
     `);
     console.log('✅ Ticket Chat Messages table created');
+
+    // 12. Admin Audit Logs table
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS admin_audit_logs (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        action VARCHAR(255) NOT NULL,
+        admin_email VARCHAR(255),
+        target_id VARCHAR(255),
+        details TEXT,
+        metadata JSONB,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      CREATE INDEX IF NOT EXISTS idx_admin_audit_logs_created_at ON admin_audit_logs(created_at DESC);
+    `);
+    console.log('✅ Admin Audit Logs table created');
 
     // Perform safe migrations for existing tables
     await client.query(`

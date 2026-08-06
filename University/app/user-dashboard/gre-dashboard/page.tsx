@@ -126,7 +126,7 @@ export default function GREDashboardPage() {
     return () => clearInterval(interval);
   }, [fetchData, token]);
 
-  // Filtered allocations with useMemo — exact same logic as original
+  // Filtered allocations with useMemo — multi-filter support
   const filteredAllocations = React.useMemo(() => {
     return allocations.filter(a => {
       const q = search.toLowerCase();
@@ -138,17 +138,22 @@ export default function GREDashboardPage() {
         a.score_percent !== undefined && a.score_percent !== null
           ? `${a.score_percent}%`
           : '';
-      return (
+
+      const matchSearch =
         !q ||
         (a.test_title || '').toLowerCase().includes(q) ||
         (a.test_type || '').toLowerCase().includes(q) ||
         (a.status || '').toLowerCase().includes(q) ||
         scoreStr.includes(q) ||
         startDateStr.includes(q) ||
-        endDateStr.includes(q)
-      );
+        endDateStr.includes(q);
+
+      const matchStatus = statusFilter === 'ALL' || (a.status || '').toUpperCase() === statusFilter;
+      const matchType = typeFilter === 'ALL' || (a.test_type || '').toUpperCase() === typeFilter;
+
+      return matchSearch && matchStatus && matchType;
     });
-  }, [allocations, search]);
+  }, [allocations, search, statusFilter, typeFilter]);
 
   const totalPages = Math.ceil(filteredAllocations.length / limit) || 1;
   const paginatedAllocations = filteredAllocations.slice((currentPage - 1) * limit, currentPage * limit);
@@ -337,7 +342,41 @@ export default function GREDashboardPage() {
               </h3>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+              {/* Status Filter */}
+              <select
+                value={statusFilter}
+                onChange={e => setStatusFilter(e.target.value)}
+                style={{
+                  padding: '7px 10px', border: '1px solid #e5e7eb',
+                  borderRadius: '8px', fontSize: '12px', backgroundColor: 'white',
+                  color: '#1a1a1a', outline: 'none', fontWeight: '600'
+                }}
+              >
+                <option value="ALL">All Statuses</option>
+                <option value="ASSIGNED">Assigned</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="EXPIRED">Expired</option>
+                <option value="CANCELLED">Cancelled</option>
+              </select>
+
+              {/* Format Filter */}
+              <select
+                value={typeFilter}
+                onChange={e => setTypeFilter(e.target.value)}
+                style={{
+                  padding: '7px 10px', border: '1px solid #e5e7eb',
+                  borderRadius: '8px', fontSize: '12px', backgroundColor: 'white',
+                  color: '#1a1a1a', outline: 'none', fontWeight: '600'
+                }}
+              >
+                <option value="ALL">All Formats</option>
+                <option value="FULL_LENGTH">Full-Length</option>
+                <option value="SECTIONAL">Sectional</option>
+                <option value="TOPIC_WISE">Topic-Wise</option>
+              </select>
+
               {/* Search */}
               <div style={{ position: 'relative' }}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2"
@@ -346,12 +385,12 @@ export default function GREDashboardPage() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search date (e.g. Aug 03), title, type..."
+                  placeholder="Search date, title, type..."
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   style={{
                     padding: '8px 32px 8px 32px', border: '1px solid #e5e7eb',
-                    borderRadius: '8px', fontSize: '12px', width: '260px',
+                    borderRadius: '8px', fontSize: '12px', width: '220px',
                     outline: 'none', fontFamily: 'inherit', color: '#1a1a1a',
                   }}
                 />
