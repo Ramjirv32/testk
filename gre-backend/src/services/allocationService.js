@@ -26,11 +26,20 @@ async function allocateTestToStudent({
   overrideQuestionCount,
   overrideDuration,
 }) {
-  if (!studentId) {
-    if (!studentEmail) throw new Error('Student ID or email is required to allocate a test');
-    const studentResult = await pool.query('SELECT id FROM users WHERE email = $1', [studentEmail]);
-    if (studentResult.rows.length === 0) throw new Error('Student not found');
-    studentId = studentResult.rows[0].id;
+  // Resolve equivalent student ID and email from users table
+  if (studentId || studentEmail) {
+    const studentLookup = await pool.query(
+      `SELECT id, email FROM users WHERE LOWER(id) = LOWER($1) OR LOWER(email) = LOWER($1) OR LOWER(id) = LOWER($2) OR LOWER(email) = LOWER($2)`,
+      [studentId || '', studentEmail || '']
+    );
+    if (studentLookup.rows.length > 0) {
+      studentId = studentLookup.rows[0].id;
+      studentEmail = studentLookup.rows[0].email;
+    }
+  }
+
+  if (!studentId && !studentEmail) {
+    throw new Error('Student ID or email is required to allocate a test');
   }
 
   if (!testType) throw new Error('test_type is required');
@@ -47,11 +56,11 @@ async function allocateTestToStudent({
   if (scheduledDate) {
     const duplicateCheck = await pool.query(
       `SELECT id FROM test_allocations
-       WHERE (student_id = $1 OR student_id = $2)
+       WHERE (LOWER(student_id) = LOWER($1) OR LOWER(student_id) = LOWER($2))
          AND test_type = $3
          AND (scheduled_date = $4 OR DATE(scheduled_at) = $4::date)
          AND status IN ('REQUESTED', 'PENDING', 'APPROVED', 'SCHEDULED', 'ASSIGNED', 'IN_PROGRESS')`,
-      [studentId, studentEmail, testType, scheduledDate]
+      [studentId, studentEmail || studentId, testType, scheduledDate]
     );
     if (duplicateCheck.rows.length > 0) {
       const err = new Error('You already have an active test scheduled for this date and test type.');
